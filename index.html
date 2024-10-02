@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="src/css/main.css">
+    
+</head>
+
+<body>
+    {{> header}}
+    <div class="container my-5">
+        <h1>{{title}}</h1>
+        <div>
+        <p>My game experiments</p>
+        </div>
+    </div>
+    <div id="header-placeholder"></div>
+    {{> gamecontainer mainpath="games/game2/main.js" game="tutorial"}}
+    <!-- {{> gamecontainer mainpath="games/game2/main.js" game="tutorial"}} -->
+    <!--{{> gamecontainer mainpath="games/game1/game1.js" game="game1"}}-->
+    <script type="module" src="src/js/main.js"></script>
+</body>
+{{> cta }}
+{{> footer}}
+</html>

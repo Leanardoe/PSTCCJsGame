@@ -1,0 +1,18 @@
+{
+  "off": "../../../../../resource/audio/sfx/off.wav",
+  "tuning": "../../../../../resource/audio/sfx/tuning.wav",
+  "channel_tuning": "../../../../../resource/audio/sfx/channel_tuning.wav",
+  "distort": "../../../../../resource/audio/sfx/distort.wav",
+  "distort2": "../../../../../resource/audio/sfx/distort2.wav",
+  "glitch": "../../../../../resource/audio/sfx/glitch.wav",
+  "knob5": "../../../../../resource/audio/sfx/knob5.wav",
+  "knob6": "../../../../../resource/audio/sfx/knob6.wav",
+  "knob7": "../../../../../resource/audio/sfx/knob7.wav",
+  "knob1": "../../../../../resource/audio/sfx/knob1.mp3",
+  "knob2": "../../../../../resource/audio/sfx/knob2.wav",
+  "knob3": "../../../../../resource/audio/sfx/knob3.mp3",
+  "knob4": "../../../../../resource/audio/sfx/knob4.wav",
+  "tuning_loop": "../../../../../resource/audio/tracks/tuning_loop.wav",
+  "lightstatic_loop": "../../../../../resource/audio/tracks/lightstatic_loop.wav",
+  "staticerratic_loop": "../../../../../resource/audio/tracks/staticerratic_loop.wav"
+}
