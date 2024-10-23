@@ -36,13 +36,6 @@ const pixis = () => {
 }
 
 function createTextLine(textData) {
-    /*const line = new PIXI.Text({
-        text: textData,
-        style:{
-            fill: 0x000000,
-            fontSize: 12,
-        }
-    })*/
     const line = new PIXI.Text(textData, textStyle);
 
     line.x = 50;

@@ -16,8 +16,6 @@ export default class PassageController{
         //Loads a passage with a given id into the current passage
         let passages = await PIXI.Assets.load(this.passageFolder + "/" + this.passageFile);
 
-        //let passages = '<xml version="1.0" encoding="UTF-8"><passages><passage id="1"><title>Test Passage 1</title> <text>This is a test passage. </text></passage></passages>';
-
         let parsedPassages = this.parser.parseFromString(passages, "text/xml");      
         parsedPassages = Array.from(parsedPassages.getElementsByTagName("passage"));
 
@@ -25,8 +23,8 @@ export default class PassageController{
         //Find the given id
         parsedPassages.forEach(item => {
             if (id == item.getAttribute("id")) {
-                this.currentPassageText = item.getElementsByTagName("text")[0].innerHTML;
-                this.currentPassageTitle = item.getElementsByTagName("title")[0].innerHTML;
+                this.currentPassageText = (item.getElementsByTagName("text")[0].innerHTML).trim();
+                this.currentPassageTitle = (item.getElementsByTagName("title")[0].innerHTML).trim();
                 return;
             }
         });
