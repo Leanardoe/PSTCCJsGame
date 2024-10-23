@@ -5,7 +5,8 @@ export default class PassageController{
     //Passes the loaded text and options to the textline
 
     constructor(){
-        this.currentPassage = null;
+        this.currentPassageText = null;
+        this.currentPassageTitle = null;
         this.parser = new DOMParser();
         this.passageFolder = "../resource/passages";
         this.passageFile = "testpassages.xml";
@@ -13,26 +14,30 @@ export default class PassageController{
 
     async loadPassage(id){
         //Loads a passage with a given id into the current passage
-        let passages = await Assets.load(this.passageFolder + "/" + this.passageFile);
+        let passages = await PIXI.Assets.load(this.passageFolder + "/" + this.passageFile);
 
-        /*(passageFolder + "/" + this.passageFile)
-            .then((response) => response.text())
-            .then((xmlString) => {
-                let passages = parser.parseFromString(xmlString, "text/xml");*/
-        passages = passages.getElementsByTagName("passage");
+        //let passages = '<xml version="1.0" encoding="UTF-8"><passages><passage id="1"><title>Test Passage 1</title> <text>This is a test passage. </text></passage></passages>';
+
+        let parsedPassages = this.parser.parseFromString(passages, "text/xml");      
+        parsedPassages = Array.from(parsedPassages.getElementsByTagName("passage"));
 
         //passages should contain an array of each passage in the file
         //Find the given id
-        passages.forEach(item => {
+        parsedPassages.forEach(item => {
             if (id == item.getAttribute("id")) {
-                this.currentPassage = item;
+                this.currentPassageText = item.getElementsByTagName("text")[0].innerHTML;
+                this.currentPassageTitle = item.getElementsByTagName("title")[0].innerHTML;
                 return;
             }
         });
     }
 
-    getCurrentPassage() {
-        return this.currentPassage;
+    getCurrentPassageText() {
+        return this.currentPassageText;
+    }
+
+    getCurrentPassageTitle() {
+        return this.currentPassageTitle;
     }
 
     getOptions() {
