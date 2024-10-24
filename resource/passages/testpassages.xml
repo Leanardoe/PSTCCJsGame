@@ -4,6 +4,7 @@
     <text>
         This is a test passage.
     </text>
+    <option link="2">Continue</option>
 </passage>
 
 <passage id="2">
@@ -11,5 +12,6 @@
     <text>
         This is another test passage.
     </text>
+    <option link="1">Back</option>
 </passage>
 </passages>

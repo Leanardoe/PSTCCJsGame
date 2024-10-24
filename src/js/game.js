@@ -49,9 +49,9 @@ function createTextLine(textData) {
 async function renderPassage(passageId) {
     await passageController.loadPassage(passageId);
     let passageText = passageController.getCurrentPassageText();
-    console.log(passageText);
+    //console.log(passageText);
     let passageTitle = passageController.getCurrentPassageTitle();
-    console.log(passageTitle);
+    //console.log(passageTitle);
 
     createTextLine(passageText);
 }

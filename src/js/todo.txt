@@ -1,0 +1,7 @@
+Display options
+Get input from user
+
+Add checks and variables to passage xml
+
+Anything inside check will only be shown if the check is true
+<check op="lt | gt | eq" var="***"></check>

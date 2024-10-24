@@ -7,6 +7,7 @@ export default class PassageController{
     constructor(){
         this.currentPassageText = null;
         this.currentPassageTitle = null;
+        this.currentOptions = null;
         this.parser = new DOMParser();
         this.passageFolder = "../resource/passages";
         this.passageFile = "testpassages.xml";
@@ -25,9 +26,27 @@ export default class PassageController{
             if (id == item.getAttribute("id")) {
                 this.currentPassageText = (item.getElementsByTagName("text")[0].innerHTML).trim();
                 this.currentPassageTitle = (item.getElementsByTagName("title")[0].innerHTML).trim();
+                this.currentOptions = this.parseOptions(Array.from(item.getElementsByTagName("option")));
                 return;
             }
         });
+    }
+
+    parseOptions(options) {
+        //Returns an array of objects containing option objects
+        //option objects contain the text and linked passage
+
+        let parsedOptions = [];
+
+        options.forEach(item => {
+            let optionObject = {
+                text: item.innerHTML.trim(),
+                link: item.getAttribute("link")
+            }
+            parsedOptions.push(optionObject);
+        });
+
+        return parsedOptions;
     }
 
     getCurrentPassageText() {
@@ -39,6 +58,6 @@ export default class PassageController{
     }
 
     getOptions() {
-        //Should return an array of the current passage's options
+        return this.currentOptions;
     }
 }
