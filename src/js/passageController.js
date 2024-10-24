@@ -1,10 +1,14 @@
 import * as PIXI from "pixi.js";
+import TextRenderer from "./textrenderer";
 
 export default class PassageController{
     //Reads in passage files from a defined folder
     //Passes the loaded text and options to the textline
 
-    constructor(){
+    constructor(app){
+        this.textRenderer = new TextRenderer(app)
+
+        this.app = app;
         this.currentPassageText = null;
         this.currentPassageTitle = null;
         this.currentOptions = null;
@@ -27,6 +31,8 @@ export default class PassageController{
                 this.currentPassageText = (item.getElementsByTagName("text")[0].innerHTML).trim();
                 this.currentPassageTitle = (item.getElementsByTagName("title")[0].innerHTML).trim();
                 this.currentOptions = this.parseOptions(Array.from(item.getElementsByTagName("option")));
+
+                this.renderPassage();
                 return;
             }
         });
@@ -59,5 +65,13 @@ export default class PassageController{
 
     getOptions() {
         return this.currentOptions;
+    }
+
+    renderPassage() {
+        this.textRenderer.addTextLine(this.currentPassageText);
+        this.textRenderer.addLineBreak();
+        this.currentOptions.forEach(option => {
+            this.textRenderer.addTextLine(option.link + ") " + option.text);
+        });
     }
 }

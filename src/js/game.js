@@ -6,17 +6,8 @@ import PassageController from "./passageController";
 let windowSize = 400;
 const window = document.getElementById("test-container");
 
-let app;
-const passageController = new PassageController();
-
-const textStyle = new PIXI.TextStyle({
-    fill: 0xFFFFFF,
-    fontFamily: "Arial",
-    fontSize: 12,
-})
-
 const pixis = () => {
-    app = new PIXI.Application({
+    const app = new PIXI.Application({
         view: window,
         width: windowSize,
         height: windowSize,
@@ -24,9 +15,15 @@ const pixis = () => {
         backgroundColor: 0x000000
     })
 
-    renderPassage(1);
+    const passageController = new PassageController(app);
 
-    //app.ticker.add(delta)
+    app.ticker.add((delta) => {
+        passageController.textRenderer.renderTextLines();
+    });
+
+    passageController.loadPassage(1);
+
+
 
     /*const gameContainer = new PIXI.Container();
     gameContainer.backgroundColor = 0xFFFFFF;
