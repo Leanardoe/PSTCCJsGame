@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 
 export default class TextRenderer{
 
-    constructor(app){
+    constructor(app) {
         this.app = app;
         this.textContainer = new PIXI.Container();
         this.textLines = [];
@@ -21,7 +21,11 @@ export default class TextRenderer{
         })
     }
 
-    renderTextLines(){
+    clear() {
+        this.textLines.length = 0;
+    }
+
+    renderTextLines() {
         //Called in ticker, draws text lines to the screen
         this.textContainer.removeChildren();
         this.currentLineHeight = this.initialLineHeight;
@@ -35,14 +39,13 @@ export default class TextRenderer{
         });
     }
 
-    addTextLine(text){
+    addTextLine(text) {
         //text is a string
         const line = new PIXI.Text(text, this.textStyle);
         this.textLines.push(line);
     }
 
-    addLineBreak(count = 1){
-        console.log(this.currentLineHeight);
+    addLineBreak(count = 1) {
         for (let i = 0; i < count; i++) {
             this.addTextLine("");
         }

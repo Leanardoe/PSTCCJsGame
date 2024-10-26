@@ -13,5 +13,16 @@
         This is another test passage.
     </text>
     <option link="1">Back</option>
+    <option link="3">Next</option>
+</passage>
+
+<passage id="3">
+    <title>Test Passage 3</title>
+    <text>
+        The third test passage.
+    </text>
+    <option link="1">The first passage.</option>
+    <option link="2">The second passage.</option>
+    <option link="3">The thrid passage.</option>
 </passage>
 </passages>
