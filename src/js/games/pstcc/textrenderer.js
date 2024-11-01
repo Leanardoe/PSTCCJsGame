@@ -5,31 +5,40 @@ export default class TextRenderer {
         this.app = app;
         this.textContainer = new PIXI.Container();
         this.textLines = [];
-        this.leftMargin = 50;
-        this.initialLineHeight = 50;
-        this.currentLineHeight = this.initialLineHeight;
         
-        // Typing animation settings
+        // Set margins and spacing to center text within the canvas
+        this.leftMargin = 20;
+        this.initialLineHeight = 30;
+        this.currentLineHeight = this.initialLineHeight;
+
+        this.app.stage.addChild(this.textContainer);
+
+        // Typing animation properties
         this.isTyping = false;
         this.typingSpeed = 1; // Characters per frame
         this.typingIndex = 0;
         this.typingLine = "";
         this.completeLines = [];
 
-        app.stage.addChild(this.textContainer);
+        this.updateTextStyle();
+    }
 
+    updateTextStyle() {
+        // Dynamically set text style based on canvas size for clearer text
+        const fontSize = Math.max(this.app.screen.width / 30, 20); // Scale font size dynamically
         this.textStyle = new PIXI.TextStyle({
             fill: 0xFFFFFF,
             fontFamily: "Arial",
-            fontSize: 14,
+            fontSize: fontSize,
             wordWrap: true,
-            wordWrapWidth: 180,
-            resolution: 2 // Increase resolution for sharper text
+            wordWrapWidth: this.app.screen.width - 2 * this.leftMargin,
+            align: "center",
+            resolution: window.devicePixelRatio || 2 
         });
     }
 
     clear() {
-        this.textLines.length = 0;
+        this.textLines = [];
         this.completeLines = [];
         this.typingIndex = 0;
         this.isTyping = false;
@@ -45,20 +54,24 @@ export default class TextRenderer {
     }
 
     renderTextLines() {
-        // Called in ticker, renders text lines with typing effect
         this.textContainer.removeChildren();
         this.currentLineHeight = this.initialLineHeight;
+
+        // Center the text horizontally by adjusting x position
+        const centerX = this.app.screen.width / 2;
 
         // Render each completed line
         this.completeLines.forEach(lineText => {
             const line = new PIXI.Text(lineText, this.textStyle);
-            line.x = this.leftMargin;
+            line.resolution = this.app.renderer.resolution; // Set text resolution for sharpness
+            line.x = centerX - line.width / 2; // Center align each line
             line.y = this.currentLineHeight;
-            this.currentLineHeight += 20; // Increase line height slightly for readability
+            this.currentLineHeight += line.height + 10; // Add spacing between lines
+
             this.textContainer.addChild(line);
         });
 
-        // Render the current typing line if still typing
+        // Typing animation for the current line
         if (this.isTyping) {
             const currentLine = this.completeLines[this.completeLines.length - 1];
             const updatedLine = currentLine + this.typingLine.charAt(this.typingIndex);

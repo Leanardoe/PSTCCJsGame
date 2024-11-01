@@ -1,17 +1,17 @@
 import { create } from "handlebars";
 import * as PIXI from "pixi.js";
 
-import PassageController from "./passageController";
-import InputHandler from "./inputhandler";
+import PassageController from "./passageController.js";
+import InputHandler from "./inputhandler.js";
 import audioMgr from "./audioManager.js";
-// import FilterController from './filters.js';
+import FilterController from './filters.js';
 
 let canvasSize = 400;
 const canvas = document.getElementById("test-container");
 
 let passageController;
 let inputHandler;
-// let filterController; 
+let filterController;
 let inputEnabled = true;
 let inputEnableTime = 20;
 let timer = 0;
@@ -34,9 +34,9 @@ const pixis = async () => {
     passageController = new PassageController(app, inputHandler);
 
     // Initialize FilterController
-    // filterController = new FilterController();
+    filterController = new FilterController();
 
-    // Game container
+    // Game container (text rendering and filters)
     const gameContainer = new PIXI.Container();
 
     // Load all passages initially and start with the first one
@@ -45,8 +45,8 @@ const pixis = async () => {
     // Add text rendering container to the game container
     gameContainer.addChild(passageController.textRenderer.textContainer);
 
-    // Apply filters to the game container
-    // gameContainer.filters = filterController.filters;
+    // Apply filters to the game container (text will be affected by filters)
+    gameContainer.filters = filterController.filters;
 
     // Add the game container to the stage
     app.stage.addChild(gameContainer);
@@ -68,7 +68,8 @@ function handleResize(app) {
 }
 
 function gameLoop(delta) {
-    // filterController.update(delta);
+    // Update filter animations
+    filterController.update(delta);
 
     // Render text lines with typing animation
     passageController.textRenderer.renderTextLines();
@@ -103,4 +104,5 @@ function checkInput(keys) {
     });
 }
 
+// Initialize the application
 pixis();
