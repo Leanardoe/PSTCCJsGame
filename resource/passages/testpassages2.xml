@@ -1,0 +1,37 @@
+<passages>
+    <!-- Start -->
+    <passage id="1">
+        <title>At the Street</title>
+        <text>You are standing at the edge of a busy street. Cars are speeding by, and you need to get to the other side. What do you do?</text>
+        <option link="2">Step onto the street and wait for an opening</option>
+        <option link="3">Turn around and go back</option>
+        <option link="4">Run across quickly</option>
+    </passage>
+
+    <!-- Step onto the street and wait -->
+    <passage id="2">
+        <title>In the Middle of the Street</title>
+        <text>You step onto the street and wait for an opening in traffic. Cars are zooming by, and you feel the rush of wind as each one passes dangerously close. Do you keep waiting or move?</text>
+        <option link="5">Keep waiting in the middle of the street</option>
+        <option link="1">Turn back to the sidewalk</option>
+    </passage>
+
+    <!-- Turn back (Return to Start) -->
+    <passage id="3">
+        <title>Turning Back</title>
+        <text>You decide that crossing the street isn't worth the risk. You turn around and head back where you came from. You feel safe, but the task remains unfinished.</text>
+        <option link="1">Return to the edge of the street</option>
+    </passage>
+
+    <!-- Run across quickly (Successful Ending) -->
+    <passage id="4">
+        <title>Safely Across</title>
+        <text>With a burst of courage, you sprint across the street, dodging cars with precision. You make it to the other side safely, your heart pounding from the adrenaline. You've successfully crossed the street!</text>
+    </passage>
+
+    <!-- Keep waiting in the middle of the street (Bad Ending) -->
+    <passage id="5">
+        <title>Tragic End</title>
+        <text>You decide to keep waiting in the middle of the street, hoping for a safe moment to cross. But as you hesitate, a car appears suddenly and can't stop in time... This is the end.</text>
+    </passage>
+</passages>

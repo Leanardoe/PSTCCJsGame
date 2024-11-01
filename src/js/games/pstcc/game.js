@@ -9,19 +9,18 @@ const canvas = document.getElementById("test-container");
 
 let passageController;
 let inputHandler;
-let input;
 let inputEnabled = true;
 let inputEnableTime = 20;
 let timer = 0;
 
-const pixis = () => {
+const pixis = async () => {
     const app = new PIXI.Application({
         view: canvas,
         width: canvasSize,
         height: canvasSize,
         autoResize: true,
         backgroundColor: 0x000000
-    })
+    });
 
     inputHandler = new InputHandler(app);
     window.addEventListener("keydown", inputHandler.keyDown.bind(inputHandler));
@@ -29,32 +28,25 @@ const pixis = () => {
 
     passageController = new PassageController(app, inputHandler);
 
+    // Load all passages initially and start with the first one
+    await passageController.loadPassages();
+
     app.ticker.add((delta) => {
         gameLoop();
     });
-
-    passageController.loadPassage(1);
-
-
-
-    /*const gameContainer = new PIXI.Container();
-    gameContainer.backgroundColor = 0xFFFFFF;
-    app.stage.addChild(gameContainer);*/
-
-    //app.stage.addChild(createTextLine('Testing text writing'));
-}
+};
 
 function gameLoop() {
+    // Render text lines with typing animation
     passageController.textRenderer.renderTextLines();
+
     if (inputEnabled) {
         checkInput(inputHandler.pollInput());
-    }
-    else {
-        if (timer == inputEnableTime) {
+    } else {
+        if (timer === inputEnableTime) {
             inputEnabled = true;
             timer = 0;
-        }
-        else {
+        } else {
             timer++;
         }
     }
@@ -62,21 +54,21 @@ function gameLoop() {
 
 function checkInput(keys) {
     let choice;
+
     Object.keys(keys).forEach(item => {
-        if (keys[item] == true) {
-            inputEnabled = false;
+        if (keys[item] === true) {
             choice = parseInt(item);
-            passageController.changePassage(choice);
+
+            if (choice === 0) {
+                // Go back if '0' is pressed (or any specified key for backtracking)
+                passageController.goBack();
+            } else {
+                inputEnabled = false;
+                passageController.changeNode(choice);
+            }
         }
     });
 }
 
-async function renderPassage(passageId) {
-    await passageController.loadPassage(passageId);
-    let passageText = passageController.getCurrentPassageText();
-    let passageTitle = passageController.getCurrentPassageTitle();
-
-    createTextLine(passageText);
-}
-
+// Initialize the application
 pixis();
