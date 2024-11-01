@@ -22,6 +22,8 @@ export default class PassageController {
         const parsedXML = this.parser.parseFromString(passagesXML, "text/xml");
         const passages = Array.from(parsedXML.getElementsByTagName("passage"));
 
+        //passages should contain an array of each passage in the file
+        //Find the given id
         passages.forEach(passageElement => {
             const id = passageElement.getAttribute("id");
             const title = passageElement.getElementsByTagName("title")[0]?.textContent.trim();
@@ -91,11 +93,27 @@ export default class PassageController {
     }
 
     parseOptions(options) {
-        // Returns an array of option objects containing the text and linked passage
+        //Returns an array of objects containing option objects
+        //option objects contain the text and linked passage
         return options.map((item, index) => ({
             id: index + 1,
             text: item.textContent.trim(),
             link: item.getAttribute("link")
         }));
+    }
+    selectOption(id) {
+        //id is an int corresponding to the stored option's id
+    }
+
+    getCurrentPassageText() {
+        return this.currentPassageText;
+    }
+
+    getCurrentPassageTitle() {
+        return this.currentPassageTitle;
+    }
+
+    getOptions() {
+        return this.currentOptions;
     }
 }

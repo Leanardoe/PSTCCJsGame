@@ -1,3 +1,9 @@
+/*
+Unimplemented audio controller
+
+
+
+*/
 import * as PIXI from "pixi.js";
 import { sound } from '@pixi/sound';
 

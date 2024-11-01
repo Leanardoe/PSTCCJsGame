@@ -1,3 +1,10 @@
+/*
+Testing file for filters
+
+
+
+*/
+
 import { create } from "handlebars";
 import * as PIXI from "pixi.js";
 

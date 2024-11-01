@@ -54,6 +54,7 @@ export default class TextRenderer {
     }
 
     renderTextLines() {
+        //Called in ticker, draws text lines to the screen
         this.textContainer.removeChildren();
         this.currentLineHeight = this.initialLineHeight;
 

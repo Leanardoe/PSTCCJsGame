@@ -1,3 +1,10 @@
+/*
+Unimplemented filter configurations, may need mroe testing to work with current canvas settings
+
+
+
+*/
+
 import * as PIXI from "pixi.js";
 import {OldFilmFilter} from '@pixi/filter-old-film';
 import {RGBSplitFilter} from '@pixi/filter-rgb-split';

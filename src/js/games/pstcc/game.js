@@ -42,7 +42,6 @@ const pixis = async () => {
     // Load all passages initially and start with the first one
     await passageController.loadPassages();
 
-    // Add text rendering container to the game container
     gameContainer.addChild(passageController.textRenderer.textContainer);
 
     // Apply filters to the game container
@@ -51,10 +50,8 @@ const pixis = async () => {
     // Add the game container to the stage
     app.stage.addChild(gameContainer);
 
-    // Event listener for resizing the canvas
     window.addEventListener("resize", () => handleResize(app));
 
-    // Main game loop
     app.ticker.add((delta) => {
         gameLoop(delta);
     });
@@ -64,7 +61,7 @@ const pixis = async () => {
 function handleResize(app) {
     app.renderer.resize(window.innerWidth, window.innerHeight);
     passageController.textRenderer.updateTextStyle();
-    passageController.renderCurrentNode(); // Re-render current text with updated style
+    passageController.renderCurrentNode(); 
 }
 
 function gameLoop(delta) {
