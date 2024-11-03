@@ -74,6 +74,7 @@ export default class PassageController{
             let optionObject = {
                 id: i,
                 text: item.innerHTML.trim(),
+                textBroken: item.innerHTML.trim().split(' '),
                 link: item.getAttribute("link")
             }
             i++;
