@@ -98,6 +98,7 @@ export default class PassageController {
         return options.map((item, index) => ({
             id: index + 1,
             text: item.textContent.trim(),
+            textBroken: item.innerHTML.trim().split(' '),
             link: item.getAttribute("link")
         }));
     }
