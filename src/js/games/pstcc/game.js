@@ -12,9 +12,9 @@ const canvas = document.getElementById("test-container");
 let passageController;
 let inputHandler;
 // let filterController; 
-let inputEnabled = true;
-let inputEnableTime = 20;
-let timer = 0;
+let pointyTimer = 0;
+const pointyTimerInterval = 30;
+let pointyRendered = false;
 
 const pixis = async () => {
     const app = new PIXI.Application({
@@ -29,7 +29,6 @@ const pixis = async () => {
     // Initialize InputHandler and PassageController
     inputHandler = new InputHandler(app);
     window.addEventListener("keydown", inputHandler.keyDown.bind(inputHandler));
-    //window.addEventListener("keyup", inputHandler.keyUp.bind(inputHandler));
 
     passageController = new PassageController(app, inputHandler);
 
@@ -50,6 +49,7 @@ const pixis = async () => {
     // Add the game container to the stage
     app.stage.addChild(gameContainer);
 
+    //handleResize(app);
     window.addEventListener("resize", () => handleResize(app));
 
     app.ticker.add((delta) => {
@@ -70,20 +70,23 @@ function gameLoop(delta) {
     // Render text lines with typing animation
     passageController.textRenderer.renderTextLines();
 
+    // Render the user's input
+    passageController.textRenderer.renderInput(inputHandler.pollInput());
+
     // Handle input and navigation
-    if (inputEnabled) {
+    if (inputHandler.inputEnabled) {
+        pointyTimer++;
+        if(pointyTimer % pointyTimerInterval == 0) {
+            pointyRendered = passageController.textRenderer.renderPointy(pointyRendered);
+            pointyTimer = 0;
+        }
+
         if(inputHandler.enterPressed && inputHandler.pollInput() != ""){
-            checkInput(inputHandler.pollInput(), passageController.currentNode.options);
+            checkInput(inputHandler.pollInput(), passageController.getOptions());
         }
         inputHandler.enterPressed = false;
-    }
-    else {
-        if (timer == inputEnableTime) {
-            inputEnabled = true;
-            timer = 0;
-        } else {
-            timer++;
-        }
+    } else {
+        passageController.textRenderer.renderPointy(true);
     }
 }
 
@@ -100,10 +103,8 @@ function checkInput(input, options) {
     const inputBroken = input.split(' ');
     let choice;
     let passedOptions = [];
-    let inputWord;
-    let optionWord;
-    let id;
-    let idIndex;
+    let inputWord, optionWord, optionWordPunctless;
+    let id, idIndex;
     let errorMessage;
 
     options.forEach(option => {
@@ -111,23 +112,30 @@ function checkInput(input, options) {
         id = option.id;
         if(input.replaceAll(/[.,!?']/g, '') == id) {
             passedOptions.push(id);
+            //console.log("ID matched. " + id);
         } else {
-            for (let i = 0; i < optionWords; i++) {
+            for (let i = 0; i < option.textBroken.length; i++) {
                 inputWord = inputBroken[i];
                 optionWord = option.textBroken[i];
+                
                 idIndex = passedOptions.indexOf(id);
+
                 if(inputWord != null && optionWord != null) {
-                    inputWord = inputWord.replaceAll(/[.,!?']/g, '');
-                    optionWord = optionWord.replaceAll(/[.,!?']/g, '');
-                    if(inputWord.toLowerCase() != optionWord.toLowerCase()) {
+                    inputWord = inputWord.toLowerCase();
+                    optionWord = optionWord.toLowerCase();
+                    optionWordPunctless = optionWord.replaceAll(/[.,!?']/g, '');
+
+                    if(inputWord == optionWord || inputWord == optionWordPunctless) {
+                        if(idIndex == -1) {
+                            passedOptions.push(id);
+                        }
+                        //console.log(id + ") Word matched. " + optionWord);
+                    } else {
                         if(idIndex > -1) {
                             passedOptions.splice(idIndex, 1);
                         }
-                        break;
-                    } else if(idIndex == -1) {
-                        passedOptions.push(id);
+                        return;
                     }
-                    //console.log(id + ") Word matched. " + optionWord);
                 }
             }
         }

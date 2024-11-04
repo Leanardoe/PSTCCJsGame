@@ -31,6 +31,7 @@ export default class PassageController {
             const options = Array.from(passageElement.getElementsByTagName("option")).map((option, index) => ({
                 id: index + 1,
                 text: option.textContent.trim(),
+                textBroken: option.textContent.trim().split(' '),
                 link: option.getAttribute("link")
             }));
 
@@ -61,11 +62,8 @@ export default class PassageController {
             } else {
                 // Display end text if no options are available
                 this.textRenderer.addTextLine(this.endText);
-                this.input.setOptionCount(0); // No more options
+                this.input.disableInput(); // No more options
             }
-    
-            // Set input option count based on available options
-            this.input.setOptionCount(this.currentNode.options.length);
         }
     }
     
@@ -98,7 +96,7 @@ export default class PassageController {
         return options.map((item, index) => ({
             id: index + 1,
             text: item.textContent.trim(),
-            textBroken: item.innerHTML.trim().split(' '),
+            textBroken: item.textContent.trim().split(' '),
             link: item.getAttribute("link")
         }));
     }
@@ -115,6 +113,6 @@ export default class PassageController {
     }
 
     getOptions() {
-        return this.currentOptions;
+        return this.currentNode.options;
     }
 }

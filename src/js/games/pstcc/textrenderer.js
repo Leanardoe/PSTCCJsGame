@@ -13,6 +13,22 @@ export default class TextRenderer {
 
         this.app.stage.addChild(this.textContainer);
 
+        // Input rendering stuff, I need to update it to work with the
+        // new stuff Ryan did. -Bryce
+        this.inputMargin = 50;
+        this.inputContainer = new PIXI.Container();
+        this.inputLineHeight = app.screen.height * .9;
+        this.pointyContainer = new PIXI.Container();
+
+        app.stage.addChild(this.inputContainer);
+        app.stage.addChild(this.pointyContainer);
+
+        this.inputStyle = new PIXI.TextStyle({
+            fill: 0xFFFFFF,
+            fontFamily: "Courier",
+            fontSize: 14,
+        })
+
         // Typing animation properties
         this.isTyping = false;
         this.typingSpeed = 1; // Characters per frame
@@ -98,6 +114,27 @@ export default class TextRenderer {
     addLineBreak(count = 1) {
         for (let i = 0; i < count; i++) {
             this.completeLines.push(""); // Add an empty line for spacing
+        }
+    }
+
+    renderInput(text) {
+        this.inputContainer.removeChildren();
+        const input = new PIXI.Text(text, this.inputStyle);
+        input.x = this.inputMargin;
+        input.y = this.inputLineHeight;
+        this.inputContainer.addChild(input);
+    }
+
+    renderPointy(isRendered) {
+        this.pointyContainer.removeChildren();
+        if(isRendered) {
+            return false;
+        } else {
+            const pointy = new PIXI.Text(">", this.inputStyle);
+            pointy.x = this.inputMargin - 15;
+            pointy.y = this.inputLineHeight;
+            this.pointyContainer.addChild(pointy);
+            return true;
         }
     }
 }
