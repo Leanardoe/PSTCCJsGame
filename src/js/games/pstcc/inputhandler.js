@@ -18,6 +18,11 @@ export default class InputHandler{
     // }
 
     keyDown(e) {
+        if(e.keyCode == 32 && e.target == document.body) {
+            //Prevents spacebar from scrolling page
+            e.preventDefault();
+        }
+
         if(this.inputEnabled) {
             const key = String(e.key);
         

@@ -3,13 +3,17 @@
     <title>Test Passage 1</title>
     <text>
         This is a test passage.
+    [check visited3 eq true]You have visited passage 3.[/check]
+    [check visited2 eq true]You have visited passage 2.[/check]
     </text>
     <option link="2">Continue</option>
+    <option link="3">[check visited3 eq true]Passage 3[/check]</option>
 </passage>
 
 <passage id="2">
     <title>Test Passage 2</title>
     <text>
+        [set visited2 true]
         This is another test passage.
     </text>
     <option link="1">Back</option>
@@ -19,10 +23,11 @@
 <passage id="3">
     <title>Test Passage 3</title>
     <text>
+        [set visited3 true]
         The third test passage.
     </text>
     <option link="1">The first passage.</option>
     <option link="2">The second passage.</option>
-    <option link="3">The thrid passage.</option>
+    <option link="3">The third passage.</option>
 </passage>
 </passages>

@@ -12,8 +12,10 @@ export default class PassageController {
         this.previousNodes = []; // Stack for tracking previous nodes
         this.parser = new DOMParser();
         this.passageFolder = "../resource/passages";
-        this.passageFile = "testpassages2.xml";
+        this.passageFile = "testpassages.xml";
         this.endText = "The End"; // Default end text
+        this.currentPassageText = null;
+        this.currentPassageOptions = null;
     }
 
     async loadPassages() {
@@ -47,11 +49,17 @@ export default class PassageController {
     renderCurrentNode() {
         this.textRenderer.clear();
     
+
+        let passageText = this.parseTags(this.currentNode.text);
+        this.currentPassageText = passageText.trim();
+        console.log(passageText);
+
         // Display the current passage text and title
         if (this.currentNode) {
             this.textRenderer.addTextLine(this.currentNode.title);
             this.textRenderer.addLineBreak();
-            this.textRenderer.addTextLine(this.currentNode.text);
+            //this.textRenderer.addTextLine(this.currentNode.text);
+            this.textRenderer.addTextLine(this.currentPassageText);
             this.textRenderer.addLineBreak();
     
             // Display options or end text
@@ -80,6 +88,47 @@ export default class PassageController {
             this.currentNode = this.storyNodes[selectedOption.link];
             this.renderCurrentNode();
         }
+    }
+
+    parseTags(text) {
+        //Parses and removes 'set' tags from the text
+        let parsedText = text;
+        let removedText = [];
+
+        for (let i = 0; i < text.length; i++) {
+            if (text[i] == '[') {
+                if (i < 0 && text[i - 1] == '\\') 
+                    {
+                        //Escape character
+                        continue;
+                    }
+
+                if (text.slice(i, i + 6) == "[check") {
+                    let begin = i;
+                    let startIndex = i + 7;
+                    let endIndex = 0;
+                    let words = [];
+                    for (endIndex = startIndex; text[endIndex] != "]"; endIndex++) {
+                        //Pull out the options for the check tag
+                        if (text[endIndex] == ' ') {
+                            words.push(text.slice(startIndex, endIndex));
+                            startIndex = endIndex;
+                        }
+                    }
+                    words.push(text.slice(startIndex, endIndex));
+                    //Words now contains the options for the check
+
+                    removedText.push(parsedText.slice(begin, endIndex + 1));
+                }
+            }
+        }
+        
+        //Remove all tags from the output
+        for (let i = 0; i < removedText.length; i++) {
+            parsedText = parsedText.replace(removedText[i], "")
+        }
+
+        return parsedText.trim();
     }
 
     goBack() {
