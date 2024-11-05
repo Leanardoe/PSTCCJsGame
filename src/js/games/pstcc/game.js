@@ -82,6 +82,7 @@ function gameLoop(delta) {
         }
 
         if(inputHandler.enterPressed && inputHandler.pollInput() != ""){
+            console.log(passageController.getOptions);
             checkInput(inputHandler.pollInput(), passageController.getOptions());
         }
         inputHandler.enterPressed = false;
