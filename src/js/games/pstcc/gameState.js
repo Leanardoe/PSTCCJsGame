@@ -16,19 +16,20 @@ export default class GameState {
         let value = parseInt(this.stateDictionary[key]);
 
         if (op == "lt") {
-            return checknum < value;
+            return value < checknum;
         }
 
         if (op == "gt") {
-            return checknum > value;
+            console.log(checknum, value);
+            return value > checknum;
         }
 
         if (op == "lte") {
-            return checknum <= value;
+            return value <= checknum;
         }
 
         if (op == "gte") {
-            return checknum >= value;
+            return value >= checknum;
         }
     }
 }

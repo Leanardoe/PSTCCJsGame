@@ -14,6 +14,7 @@
     <title>Test Passage 2</title>
     <text>
         [set visited2 true]
+        [set var1 5]
         This is another test passage.
     </text>
     <option link="1">Back</option>
@@ -25,6 +26,7 @@
     <text>
         [set visited3 true]
         The third test passage.
+    [check var1 gte 5]The check passed[/check]
     </text>
     <option link="1">The first passage.</option>
     <option link="2">The second passage.</option>

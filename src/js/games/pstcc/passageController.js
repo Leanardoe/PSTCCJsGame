@@ -63,7 +63,8 @@ export default class PassageController {
             if (optionText.length > 0) {
                 const newOption = {
                     text: optionText,
-                    id: item.id
+                    id: item.id,
+                    textBroken: optionText.split(' ')
                 }
                 parsedOptions.push(newOption);
             }
@@ -80,7 +81,6 @@ export default class PassageController {
             // Display options or end text
             if (this.currentPassageOptions.length > 0) {
                 this.currentPassageOptions.forEach(option => {
-                    console.log(option.text);
                     this.textRenderer.addTextLine(`${option.id}) ${option.text}`);
                 });
             } else {
@@ -213,6 +213,7 @@ export default class PassageController {
     }
 
     getOptions() {
-        return this.currentNode.options;
+        //return this.currentNode.options;
+        return this.currentPassageOptions;
     }
 }
