@@ -1,0 +1,71 @@
+<!--Start here Step. and Kayla-->
+<passages>
+    <!-- If you choose to walk to school -->
+     <passage id="1">
+        <title>Good Morning</title>
+        <text>The alarm goes off. The time is 7:00am. Your class starts at 8:30am. Your drive will take you 30 minutes. Do you wish to:</text>
+        <option link="2">Step onto the street and wait for an opening</option>
+        <option link="3">Turn around and go back</option>
+    </passage>
+    <!-- main path selection 1 (Success)-->
+    <passage id="2">
+        <title>WAKE UP AND GET READY</title>
+        <text>You hav to start the day eventually.</text>
+        <option link="4">Get Ready for College</option>
+    </passage>
+
+    <!-- You over slept (Game Over)-->
+    <passage id="3">
+        <title>SNOOZE FOR JUST 10 MORE MINUTES</title>
+        <text>Oh no! The time is 7:40! You overslept! You rush to pack your things in hopes you can still make it. All is going well until you trip over a pebble. You fell straight into your dog’s poop. You accept defeat and go back inside.</text>
+        <option link="1">Restart</option>
+    </passage>
+    <passage id="4">
+        <title>Get Ready for College</title>
+        <text>You get dressed and pack your lunch, you are ready to head to school. Just going to be another boring day of college.</text>
+        <option link="5"></option>
+    </passage>
+    <passage id="5">
+        <title>Get Ready for College</title>
+        <text>Your still a little tired and don't really feel like driving. You're thinking about what should you do.</text>
+        <option link="6">Drive to school(You need to suck it up and just drive to school)</option>
+        <option link="7">Call an Uber(It shouldn't take that long for someone to pick you up, and you can nap on the way.)</option>
+        <option link="8">Walk to school(It's better to excersise on days like these to wake up quickly.)</option>
+    </passage>
+
+    <!-- If you choose to walk to school -->
+    <passage id="11">
+        <title>At the Street</title>
+        <text>You are standing at the edge of a busy street. Cars are speeding by, and you need to get to the other side. What do you do?</text>
+        <option link="12">Step onto the street and wait for an opening</option>
+        <option link="13">Turn around and go back</option>
+        <option link="14">Run across quickly</option>
+    </passage>
+
+    <!-- Step onto the street and wait -->
+    <passage id="12">
+        <title>In the Middle of the Street</title>
+        <text>You step onto the street and wait for an opening in traffic. Cars are zooming by, and you feel the rush of wind as each one passes dangerously close. Do you keep waiting or move?</text>
+        <option link="15">Keep waiting in the middle of the street</option>
+        <option link="11">Turn back to the sidewalk</option>
+    </passage>
+
+    <!-- Turn back (Return to Start) -->
+    <passage id="13">
+        <title>Turning Back</title>
+        <text>You decide that crossing the street isn't worth the risk. You turn around and head back where you came from. You feel safe, but the task remains unfinished.</text>
+        <option link="11">Return to the edge of the street</option>
+    </passage>
+
+    <!-- Run across quickly (Successful Ending) -->
+    <passage id="14">
+        <title>Safely Across</title>
+        <text>With a burst of courage, you sprint across the street, dodging cars with precision. You make it to the other side safely, your heart pounding from the adrenaline. You've successfully crossed the street!</text>
+    </passage>
+
+    <!-- Keep waiting in the middle of the street (Bad Ending) -->
+    <passage id="15">
+        <title>Tragic End</title>
+        <text>You decide to keep waiting in the middle of the street, hoping for a safe moment to cross. But as you hesitate, a car appears suddenly and can't stop in time... This is the end.</text>
+    </passage>
+</passages>
