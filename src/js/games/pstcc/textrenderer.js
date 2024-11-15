@@ -3,31 +3,34 @@ import * as PIXI from "pixi.js";
 export default class TextRenderer {
     constructor(app) {
         this.app = app;
+
+        // Containers
         this.textContainer = new PIXI.Container();
-        this.textLines = [];
-        
-        // Set margins and spacing to center text within the canvas
-        this.leftMargin = 20;
-        this.initialLineHeight = 30;
-        this.currentLineHeight = this.initialLineHeight;
-
-        this.app.stage.addChild(this.textContainer);
-
-        // Input rendering stuff, I need to update it to work with the
-        // new stuff Ryan did. -Bryce
-        this.inputMargin = 50;
         this.inputContainer = new PIXI.Container();
-        this.inputLineHeight = app.screen.height * .9;
         this.pointyContainer = new PIXI.Container();
+        this.errorContainer = new PIXI.Container();
 
-        app.stage.addChild(this.inputContainer);
-        app.stage.addChild(this.pointyContainer);
+        // Input text objects
+        this.input = new PIXI.Text("");
+        this.pointy = new PIXI.Text(">");
+        this.error = new PIXI.Text("");
 
-        this.inputStyle = new PIXI.TextStyle({
-            fill: 0xFFFFFF,
-            fontFamily: "Courier",
-            fontSize: 14,
-        })
+        // Text and input text styles
+        this.textStyle = new PIXI.TextStyle();
+        this.inputStyle = new PIXI.TextStyle();
+
+        // All text properties
+        this.leftMargin;
+
+        // Display text only properties
+        this.textLines = [];
+        this.initialLineHeight;
+        this.currentLineHeight;
+
+        // Input only properties
+        this.inputY;
+        this.pointyX;
+        this.errorY;
 
         // Typing animation properties
         this.isTyping = false;
@@ -36,21 +39,76 @@ export default class TextRenderer {
         this.typingLine = "";
         this.completeLines = [];
 
+        // Adding various objects to stage and containers
+        this.app.stage.addChild(this.textContainer);
+        this.inputContainer.addChild(this.input);
+        this.pointyContainer.addChild(this.pointy);
+        this.errorContainer.addChild(this.error);
+        this.app.stage.addChild(this.inputContainer);
+        this.app.stage.addChild(this.pointyContainer);
+        this.app.stage.addChild(this.errorContainer);
+
+        // This is called to initialize the properties above and apply them to their respective objects
         this.updateTextStyle();
     }
 
+    // Dynamically set text and input style and placement based on canvas size for clearer text
     updateTextStyle() {
-        // Dynamically set text style based on canvas size for clearer text
-        const fontSize = Math.max(this.app.screen.width / 30, 20); // Scale font size dynamically
-        this.textStyle = new PIXI.TextStyle({
+        // All text properties
+        this.leftMargin = this.app.screen.width * .1;
+
+        // Display text only properties
+        this.initialLineHeight = this.app.screen.height * .1;
+
+        // Input only properties
+        this.inputY = this.app.screen.height * .85;
+        this.pointyX = this.leftMargin - this.app.screen.width * .03;
+        this.errorY = this.inputY - this.app.screen.height * .05;
+
+        // Dynamic font size
+        const fontSize = Math.max(this.app.screen.width * .03, 20);
+        const inputFontSize = Math.max(fontSize - fontSize * .05, 18);
+        const errorFontSize = Math.max(fontSize - fontSize * .2, 15);
+
+        // Dynamic bounds for word wrapping
+        const wordWrapWidth = this.app.screen.width - 2 * this.leftMargin;
+
+        // Styles for display text and input
+        this.textStyle = {
             fill: 0xFFFFFF,
             fontFamily: "Arial",
             fontSize: fontSize,
             wordWrap: true,
-            wordWrapWidth: this.app.screen.width - 2 * this.leftMargin,
+            wordWrapWidth: wordWrapWidth,
             align: "center",
-            resolution: window.devicePixelRatio || 2 
-        });
+            resolution: window.devicePixelRatio || 2
+        };
+        this.inputStyle = {
+            fill: 0xFFFFFF,
+            fontFamily: "Courier",
+            fontSize: inputFontSize,
+            wordWrap: true,
+            wordWrapWidth: wordWrapWidth,
+            resolution: window.devicePixelRatio || 2
+        };
+
+        // Updating input positions
+        this.input.x = this.leftMargin;
+        this.input.y = this.inputY;
+
+        this.pointy.x = this.pointyX;
+        this.pointy.y = this.inputY;
+
+        this.error.x = this.leftMargin;
+        this.error.y = this.errorY;
+
+        // Updating style of input
+        this.input.style = this.inputStyle;
+        this.pointy.style = this.inputStyle;
+        this.pointy.style.fill = 0x999999;
+        this.error.style = this.inputStyle;
+        this.error.style.fill = 0xFF0000;
+        this.error.style.fontSize = errorFontSize;
     }
 
     clear() {
@@ -124,23 +182,20 @@ export default class TextRenderer {
     }
 
     renderInput(text) {
-        this.inputContainer.removeChildren();
-        const input = new PIXI.Text(text, this.inputStyle);
-        input.x = this.inputMargin;
-        input.y = this.inputLineHeight;
-        this.inputContainer.addChild(input);
+        this.input.text = text;
     }
 
     renderPointy(isRendered) {
-        this.pointyContainer.removeChildren();
+        this.pointyContainer.visible = false;
         if(isRendered) {
             return false;
         } else {
-            const pointy = new PIXI.Text(">", this.inputStyle);
-            pointy.x = this.inputMargin - 15;
-            pointy.y = this.inputLineHeight;
-            this.pointyContainer.addChild(pointy);
+            this.pointyContainer.visible = true;
             return true;
         }
+    }
+
+    renderError(errorMessage) {
+        this.error.text = errorMessage;
     }
 }
