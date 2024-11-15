@@ -71,6 +71,11 @@ export default class TextRenderer {
 
     renderTextLines() {
         //Called in ticker, draws text lines to the screen
+        this.textLines.forEach(line => {
+            line.destroy();
+        })
+        this.textLines = [];
+
         this.textContainer.removeChildren();
         this.currentLineHeight = this.initialLineHeight;
 
@@ -80,6 +85,7 @@ export default class TextRenderer {
         // Render each completed line
         this.completeLines.forEach(lineText => {
             const line = new PIXI.Text(lineText, this.textStyle);
+            this.textLines.push(line);
             line.resolution = this.app.renderer.resolution; // Set text resolution for sharpness
             line.x = centerX - line.width / 2; // Center align each line
             line.y = this.currentLineHeight;
