@@ -8,13 +8,18 @@ import audioMgr from "./audioManager.js";
 
 let canvasSize = 400;
 const canvas = document.getElementById("test-container");
+const maxFPS = 20;
 
 let passageController;
 let inputHandler;
 // let filterController; 
 let pointyTimer = 0;
-const pointyTimerInterval = 30;
+const pointyTimerInterval = maxFPS / 2;
 let pointyRendered = false;
+let errorMessage = "";
+let errorStart = false;
+let errorTimer = 0;
+const errorTimerLimit = maxFPS * 3;
 
 const pixis = async () => {
     const app = new PIXI.Application({
@@ -23,7 +28,7 @@ const pixis = async () => {
         height: canvasSize,
         autoResize: true,
         backgroundColor: 0x000000,
-        resolution: window.devicePixelRatio || 2
+        resolution: window.devicePixelRatio// || 2
     });
 
     // Initialize InputHandler and PassageController
@@ -51,7 +56,9 @@ const pixis = async () => {
 
     //handleResize(app);
     window.addEventListener("resize", () => handleResize(app));
+    handleResize(app);
 
+    app.ticker.maxFPS = maxFPS;
     app.ticker.add((delta) => {
         gameLoop(delta);
     });
@@ -71,7 +78,7 @@ function gameLoop(delta) {
     passageController.textRenderer.renderTextLines();
 
     // Render the user's input
-    passageController.textRenderer.renderInput(inputHandler.pollInput());
+    passageController.textRenderer.renderInput(inputHandler.getInput());
 
     // Handle input and navigation
     if (inputHandler.inputEnabled) {
@@ -82,11 +89,27 @@ function gameLoop(delta) {
         }
 
         if(inputHandler.enterPressed && inputHandler.pollInput() != ""){
-            checkInput(inputHandler.pollInput(), passageController.getOptions());
+            errorMessage = checkInput(inputHandler.pollInput(), passageController.getOptions());
+            passageController.textRenderer.renderError(errorMessage);
+            if(errorMessage != "") {
+                errorStart = true;
+                errorTimer = 0;
+            }
         }
         inputHandler.enterPressed = false;
+
+        if(errorStart) errorTimer++;
+        if(errorTimer >= errorTimerLimit) {
+            errorMessage = "";
+            passageController.textRenderer.renderError(errorMessage);
+            errorStart = false;
+            errorTimer = 0;
+        }
     } else {
         passageController.textRenderer.renderPointy(true);
+        passageController.textRenderer.renderError("");
+        errorStart = false;
+        errorTimer = 0;
     }
 }
 
@@ -105,10 +128,9 @@ function checkInput(input, options) {
     let passedOptions = [];
     let inputWord, optionWord, optionWordPunctless;
     let id, idIndex;
-    let errorMessage;
+    let errorMessage = "";
 
     options.forEach(option => {
-        const optionWords = option.text.split(' ');
         id = option.id;
         if(input.replaceAll(/[.,!?']/g, '') == id) {
             passedOptions.push(id);
@@ -142,10 +164,10 @@ function checkInput(input, options) {
     });
 
     if(passedOptions.length == 0) {
-        errorMessage = "Input doesn't match any options. Try again.";
+        errorMessage = "That isn't an option, please try again.";
         passed = false;
     } else if(passedOptions.length > 1) {
-        errorMessage = "Input matches multiple options. Be more specific.";
+        errorMessage = "That matches multiple options, please be more specific.";
         passed = false;
     }
 
@@ -154,7 +176,11 @@ function checkInput(input, options) {
         passageController.changeNode(choice);
         //console.log("Passed.");
         inputHandler.clearInput();
-    } else console.log(errorMessage);
+    } else {
+        //console.log(errorMessage);
+    }
+    // This is an empty string if no errors occur
+    return errorMessage;
 }
 
 pixis();
