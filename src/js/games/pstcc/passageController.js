@@ -12,7 +12,7 @@ export default class PassageController {
         this.previousNodes = []; // Stack for tracking previous nodes
         this.parser = new DOMParser();
         this.passageFolder = "../resource/passages";
-        this.passageFile = "testpassages2.xml";
+        this.passageFile = "GamePassages.xml";
         this.endText = "The End"; // Default end text
     }
 
