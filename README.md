@@ -6,8 +6,10 @@ This is a text-based adventure game built in JavaScript, using the PixiJS graphi
 
 ### Prerequisites
 
-[Node.js](https://nodejs.org/en)
-[PixiJS](https://pixijs.com/)
+[Node.js](https://nodejs.org/en) <br />
+[PixiJS](https://pixijs.com/) <br />
+[Vite](https://vite.dev/) <br />
+[Handlebars](https://handlebarsjs.com)
 
 ### Building
 
@@ -16,7 +18,7 @@ Clone the repository to a local folder:
 git clone https://github.com/Leanardoe/PSTCCJsGame.git
 ```
 
-Open a terminal in that folder and run the following command to install dependencies (this will also install PixiJS if it is not already installed):
+Open a terminal in that folder and run the following command to install dependencies (this will also install Pixi, Vite, and Handlebars if they are not already installed):
 ```
 npm install
 ```
