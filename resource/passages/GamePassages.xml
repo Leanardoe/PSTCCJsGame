@@ -1,71 +1,381 @@
 <!--Start here Step. and Kayla-->
 <passages>
-    <!-- If you choose to walk to school -->
-     <passage id="1">
-        <title>Good Morning</title>
-        <text>The alarm goes off. The time is 7:00am. Your class starts at 8:30am. Your drive will take you 30 minutes. Do you wish to:</text>
-        <option link="2">Step onto the street and wait for an opening</option>
-        <option link="3">Turn around and go back</option>
-    </passage>
-    <!-- main path selection 1 (Success)-->
-    <passage id="2">
-        <title>WAKE UP AND GET READY</title>
-        <text>You hav to start the day eventually.</text>
-        <option link="4">Get Ready for College</option>
-    </passage>
 
-    <!-- You over slept (Game Over)-->
-    <passage id="3">
-        <title>SNOOZE FOR JUST 10 MORE MINUTES</title>
-        <text>Oh no! The time is 7:40! You overslept! You rush to pack your things in hopes you can still make it. All is going well until you trip over a pebble. You fell straight into your dog’s poop. You accept defeat and go back inside.</text>
-        <option link="1">Restart</option>
-    </passage>
-    <passage id="4">
-        <title>Get Ready for College</title>
-        <text>You get dressed and pack your lunch, you are ready to head to school. Just going to be another boring day of college.</text>
-        <option link="5"></option>
-    </passage>
-    <passage id="5">
-        <title>Get Ready for College</title>
-        <text>Your still a little tired and don't really feel like driving. You're thinking about what should you do.</text>
-        <option link="6">Drive to school(You need to suck it up and just drive to school)</option>
-        <option link="7">Call an Uber(It shouldn't take that long for someone to pick you up, and you can nap on the way.)</option>
-        <option link="8">Walk to school(It's better to excersise on days like these to wake up quickly.)</option>
-    </passage>
+<!-- Beginning Story Dialogue -->
+<passage id="1"> 
+    <title>(Establishing Dialog)</title> 
+    <text>It's a Friday morning, and lucky you! You have an early class! (woohoo...) It’s not all bad you only have one more day before the campus 5k you signed up for. You know it’s gonna be fun because you get to chase the geese around the pond. Those birds have been a blessing and a blite on the Hardin Valley campus. The honking has made the campus feel close to nature but all of the POOP is so annoying. I mean it’s not like the geese have anything better to do all day. </text> 
+    <option link="2">Wake Up</option>
+ </passage>
 
-    <!-- If you choose to walk to school -->
-    <passage id="11">
-        <title>At the Street</title>
-        <text>You are standing at the edge of a busy street. Cars are speeding by, and you need to get to the other side. What do you do?</text>
-        <option link="12">Step onto the street and wait for an opening</option>
-        <option link="13">Turn around and go back</option>
-        <option link="14">Run across quickly</option>
-    </passage>
+<!-- Story Main Path with Choice#1, 1 Success, 1 Fail-->
+ <passage id="2"> 
+    <title>Waking Up</title> 
+    <text> The alarm goes off. The time is 7:00am. Your class starts at 8:30am. Your drive will take you 30 minutes. Do you wish to: </text> 
+    <option link="4">Wake up and get ready</option>
+    <option link="3">Snooze for 10 more minutes</option>
+ </passage>
 
-    <!-- Step onto the street and wait -->
-    <passage id="12">
-        <title>In the Middle of the Street</title>
-        <text>You step onto the street and wait for an opening in traffic. Cars are zooming by, and you feel the rush of wind as each one passes dangerously close. Do you keep waiting or move?</text>
-        <option link="15">Keep waiting in the middle of the street</option>
-        <option link="11">Turn back to the sidewalk</option>
-    </passage>
+<!-- Game Over Choice#1 -->
+<passage id="3">
+    <title>Snoozing</title>
+    <text>Oh no! The time is 7:40! You overslept! You rush to pack your things in hopes you can still make it. All is going well until you trip over a pebble. You fell straight into your dog’s poop. You accept defeat and go back inside.</text>
+    <option link="1">Restart</option>
+</passage>
 
-    <!-- Turn back (Return to Start) -->
-    <passage id="13">
-        <title>Turning Back</title>
-        <text>You decide that crossing the street isn't worth the risk. You turn around and head back where you came from. You feel safe, but the task remains unfinished.</text>
-        <option link="11">Return to the edge of the street</option>
-    </passage>
+<!-- Success Choice#1, Continue Story Main Path-->
+<passage id="4"> 
+    <title>Wake up and get ready</title> 
+    <text> You get dressed and pack your lunch. With your lunch now packed, you head to school </text> 
+    <option link="5">Click to continue</option>
+</passage>
 
-    <!-- Run across quickly (Successful Ending) -->
-    <passage id="14">
-        <title>Safely Across</title>
-        <text>With a burst of courage, you sprint across the street, dodging cars with precision. You make it to the other side safely, your heart pounding from the adrenaline. You've successfully crossed the street!</text>
-    </passage>
+<!-- Story Main Path With Choice#2, 1 Success, 2 Fails-->
+<passage id="5"> 
+    <title>Making it to school</title> 
+    <text> You begin your drive to school and make it to the parking lot, will you?</text> 
+    <option link="8">Park your car</option>
+    <option link="6">Head to class</option>
+    <option link="7">Go study in the library until class time</option>
+ </passage>
 
-    <!-- Keep waiting in the middle of the street (Bad Ending) -->
-    <passage id="15">
-        <title>Tragic End</title>
-        <text>You decide to keep waiting in the middle of the street, hoping for a safe moment to cross. But as you hesitate, a car appears suddenly and can't stop in time... This is the end.</text>
-    </passage>
+<!-- Game Over Choice#2 -->
+<passage id="6">
+    <title>Head to Class</title>
+    <text>Silly! You forgot to park your car first and drove straight into the classroom!</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Game Over Choice#2 -->
+<passage id="7">
+    <title>Study in the Library</title>
+    <text>Silly! You forgot to park your car first and drove straight into the library!</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#2, Continue Story Main Path -->
+<passage id="8"> 
+    <title>Park your car</title> 
+    <text> After you park and get out, you begin walking to class. </text> 
+    <option link="9">Click to continue</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="9"> 
+    <title>Walking to Class</title> 
+    <text> You’re walking to class playing on your phone when suddenly a goose runs quickly by you. You don’t know where it’s going in such a hurry. </text> 
+    <option link="10">Shake it off</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="10"> 
+    <title>Shake it off</title> 
+    <text> You shake it off and attempt to make it to class before you’re late.</text> 
+    <option link="11">Go to class</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="11"> 
+    <title>Go to class</title> 
+    <text> You arrive at the classroom barely making it on time, but strangely, the door is locked. You and your classmates are wondering what the hold-up is as you notice Dr. Charles is hurrying in.</text> 
+    <option link="12">Click to continue</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="12"> 
+    <title>What do we have here?</title> 
+    <text> As she unlocks the door, you notice a feather fall off them. </text> 
+    <option link="13">Click to continue</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="13"> 
+    <title> Strange?</title> 
+    <text> Strange. They must have encountered the hurried goose you met earlier. You enter the classroom and get seated as class begins. </text> 
+    <option link="14">Begin class</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="14"> 
+    <title>Begin class</title> 
+    <text> Mid-way through the class Dr. Charles gets everyone’s attention to the front of the classroom. On the projector is an image of a goose. Before anyone can ask about it, it begins to play an animation. One by one people began to fall asleep at their desks. You eventually fall asleep. </text> 
+    <option link="15">Click to continue</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="15"> 
+    <title>First Encounter in the Lair</title> 
+    <text> As you come to, you find that you and your classmates are in a spooky goose lair located under the pond on campus </text> 
+    <option link="16">Become aware of your surroundings</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="16"> 
+    <title>Become aware of your surroundings</title> 
+    <text> You are inside a cage with a few of your classmates. There are geese patrolling the lair. Your hands are unbound but you do not see any way out of the cage </text> 
+    <option link="17">Continue looking around</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="17"> 
+    <title>Continue looking around</title> 
+    <text> Dr. Charles enters the room and begins a monologue about what their reasons were behind the lair and for kidnapping the entire class. </text> 
+    <option link="18">Continue listening</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="18"> 
+    <title>Continue listening</title> 
+    <text> You realize that everyone around you was on the registration sheet for the Wild Goose Chase 5k race that’s happening soon. </text> 
+    <option link="19">Click to continue</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="19"> 
+    <title>Seeing Professor Dunn</title> 
+    <text>At some point during their speech they bring out Professor Dunn who is also unconscious like you were before. After a while Dr. Charles leaves (cackling evilly), Professor Dunn is left in a cage by himself</text> 
+    <option link="20">Look for a way to escape</option>
+</passage>
+
+<!-- Story Main Path with Choice#3, 1 Success, 1 Fail-->
+<passage id="20"> 
+    <title>Looking for a way to escape</title> 
+    <text>Luckly for you, one of the geese knocked over a wrench into your cage. You use the wrench to break the lock and open the cage door. You make your way to the other cages to open them, but stop when you notice that Professor Dunn is being taken to another room</text> 
+    <option link="21">Go to save him! </option>
+    <option link="22">Continue helping your classmates</option>
+</passage>
+
+<!-- Game Over Choice#3 -->
+<passage id="21">
+    <title>Go Save Him</title>
+    <text>As you attempt to run and save Professor Dunn, a few geese guards come from behind you and catch you! They take you to a seperate room and you begin to feel dizzy and fall asleep. When you wake, you realize you've been turned into a goose.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#3, Continue Story Main Path -->
+<passage id="22"> 
+    <title>Continue helping your classmates</title> 
+    <text> Though you are worried about Professor Dunn, you decide to continue your efforts to free your classmates, believing that there is strength in numbers. </text> 
+    <option link="23">Finish freeing everyone! </option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="23"> 
+    <title>Finish freeing everyone</title> 
+    <text> You had to fend off some of the geese guards, but you were ultimately able to free everyone with the help of your cellmates. After the escape, you rally everyone to help save Professor Dunn. Everyone fights their way in the direction you last remember seeing some geese take Professor Dunn. </text> 
+    <option link="24">Go look for him! </option>
+</passage>
+
+<!-- Story Main Path with Choice#4, 1 Success, 2 Fails-->
+<passage id="24"> 
+    <title>Looking for Professor Dunn</title> 
+    <text> Annoyingly there is an obligatory fork in the path. Which path will you take? </text> 
+    <option link="25">Left Path</option>
+    <option link="27">Middle Path</option>
+    <option link="26">Right Path</option>
+ </passage>
+
+<!-- Game Over Choice#4 -->
+ <passage id="25">
+    <title>Left Path</title>
+    <text>You go down the left path, but happen to run directly into a group of geese guards. They catch you and take you to a room where you're turned into a goose.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Game Over Choice#4 -->
+<passage id="26">
+    <title>Right Path</title>
+    <text>You go down the left path, but happen to run directly into a group of geese guards. They catch you and take you to a room where you're turned into a goose.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#4 / Continue Story Main Path with Choice#5, 1 Success, 2 Fails-->
+<passage id="27"> 
+    <title>Middle Path</title> 
+    <text>You listen carefully and hear geese and voices down the middle path, so you follow that path with a few of your classmates. There is a door emanating a strange light, but you can definingly tell that one of the voices is Professor Dunn! </text> 
+    <option link="30">Take a stealthy approach to listen at the door</option>
+    <option link="28">Barge in the door! </option>
+    <option link="29">Run away! </option>
+ </passage>
+
+<!-- Game Over Choice#5 -->
+ <passage id="28">
+    <title>Barge in the Room</title>
+    <text>You barge in the room just to be caught by the geese guards. You've been caught and thrown in a cage with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Game Over Choice#5 -->
+<passage id="29">
+    <title>Run Away</title>
+    <text>You attempt to run away, but are quickly seen and caught by geese guards. They take you and put you in a cage with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#5 / Continue Story Main Path with Choice#6, 1 Success, 1 Fail-->
+<passage id="30"> 
+    <title>Stealth Approach</title> 
+    <text> You decide to try a stealth approach and lean your ear against the door. Good thing you did as you hear both Professors discussing how to turn everyone into geese and take over the world! </text> 
+    <option link="31">Run in and stop them! </option>
+    <option link="32">Find something to block the door. </option>
+</passage>
+
+<!-- Game Over Choice#6-->
+<passage id="31">
+    <title>Running in</title>
+    <text>You run in the room ready to stop the professors from their evil plan! As you make it through the door, two geese guards grab you and take you to a cage and lock you there with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#6, Continue Story Main Path -->
+<passage id="32"> 
+    <title>Blocking the door</title> 
+    <text> Opting to take a safer approach you instruct your team to find something to block the door. As they leave you slowly open the door to check if there are any other exits to the room. Unfortunately, you are spotted and chased by goose guards! </text> 
+    <option link="33">Run! </option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="33"> 
+    <title>Running for your life</title> 
+    <text> You make a run for it and spot a few crates stacked just high enough that you should be able to climb into the vent above them. </text> 
+    <option link="34">Hurry and climb! </option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="34"> 
+    <title>Climbing through</title> 
+    <text> You begin stealthily making your way through the vent system. As you continue on, you hear strange noises coming from below you. </text> 
+    <option link="35">Look around for where the noise is coming from</option>
+ </passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="35"> 
+    <title>Source of the noise</title> 
+    <text>You look to your right outside of a vent window and notice Dr. Charles and Professor Dunn are in a room together. You hear screams and look closer just to notice that some of your classmates are in a device! </text> 
+    <option link="36">Click to continue.. </option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="36"> 
+    <title>Source of the geese</title> 
+    <text> They were the classmates you were running away with! They were caught and place in the device! Before your eye the device kicks on and with a flash your classmates are turned into geese! </text> 
+    <option link="37">Find a way out!</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="37"> 
+    <title>The way out</title> 
+    <text> You begin hurriedly crawling on through the vent finding a safe space to hop down. You’re surrounded in a room full of boxes and drawers all labeled full of chemicals and electronics </text> 
+    <option link="38">Look around the room</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id="38"> 
+    <title>Looking Around</title> 
+    <text> You scavenge around searching for anything to help you, and then you finally notice it. </text> 
+    <option link="39">Click to continue. </option>
+</passage>
+
+<!-- Story Main Path with Choice#7, 2 Successes, 1 Fail-->
+<passage id="39"> 
+    <title>The Box</title> 
+    <text> There's a small glass box located on the wall with small vials of blue liquid inside. On the box is a small note saying it's for emergency use only. It also says to access it, you must honk twice. Will you: </text> 
+    <option link="41">Build the courage to make a poor goose noise at the box</option>
+    <option link="41">Begin looking around the room for something to use to break the box</option>
+    <option link="40">Ignore the box and begin looking for something else</option>
+ </passage>
+
+<!-- Game Over Choice#7 -->
+ <passage id="40">
+    <title>Looking Around for Something Else</title>
+    <text>As you turn away from the box looking for something else, you accidentally knocked a can off a table. Hearing the noise, geese guards run in the room. They take you and put you in a cage with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choices#7 / Continue Story Main Path -->
+<passage id=""> 
+    <title>Poor Goose Noise / Box Opened</title> 
+    <text> With the box now opened, you have retrieved the small vials. You look at them trying to figure out what the liquid inside is when you notice a note taped to the back of one. These are antidotes created by the professors in case of them accidentally being turned. </text> 
+    <option link="">Exit the room</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>Thinking on what to do</title> 
+    <text> You exit the room and stealth your way back to the main room you were held in. Some of your classmates are still there, hiding from the geese. With your help, you subdue the geese in the room. You begin discussing with your classmates what you could do with these vials when an idea pops into your head </text> 
+    <option link="">Click to continue… </option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>The Idea</title> 
+    <text> The geese all live here at the lair which is under the pond. Their entire drinking supply comes from the pond water. By pouring the vials into the pond’s main water supply, you could attempt to cure the geese </text> 
+    <option link="">Pitch your idea to everyone</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>Going to control room</title> 
+    <text> You ask your classmates about your idea, and they all agree. All of you together begin stealthily making your way to the forking path. You check both of the other paths, and they lead to the same place, the pond’s fountain pump controls. </text> 
+    <option link=""> Go! </option>
+</passage>
+
+<!-- Story Main Path with Choice#8, 1 Success, 2 Fails-->
+<passage id=""> 
+    <title>The Pump Controls</title> 
+    <text> You finally make it to the fountain pump controls. All of you begin spreading out around the controls in the center. As soon as everyone gets into position and begins to open their vials, the professors appear and catch one of your classmates. How can you fix this?: </text> 
+    <option link="">Grab a nearby pebble and throw it to distract the professors </option>
+    <option link="">Ask them why they’re doing this</option>
+    <option link="">Attempt to run and save your classmate</option>
+ </passage>
+
+<!-- Game Over Choice#8 -->
+ <passage id="">
+    <title>Pebble</title>
+    <text>As you bend over to grab a nearby pebble, a goose guard notices you. He grabs you and takes you to a cage with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Game Over Choice#8 -->
+<passage id="">
+    <title>Attempt to Run</title>
+    <text>As you attempt to run and save your classmate, a goose guard notices you. He grabs you and takes you to a cage with no way out.</text>
+    <option link="1">Restart</option>
+</passage>
+
+<!-- Success Choice#8 , Continue Story Main Path -->
+<passage id=""> 
+    <title>The Monologue</title> 
+    <text> As the professors begin a monologue explaining all of their reasons behind turning people into geese, you and all of your classmates begin sneakily pouring in your vials. </text> 
+    <option link="">Click to continue. </option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>The Cure</title> 
+    <text> With all the vials poured, the water turns a bright, vibrant blue. The antidote has spread throughout the entire pond. Geese approach to take a drink and begin turning back into humans. </text> 
+    <option link="">Click to continue. </option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>Saving Everyone</title> 
+    <text> You watch as the entire army falls apart due to the geese turning back to normal. As you are taking in the beauty of saving the world from a geese invasion, you begin hearing an absurd beeping noise. </text> 
+    <option link="">Try to locate the beeping</option>
+</passage>
+
+<!-- Story Main Path Filler Text -->
+<passage id=""> 
+    <title>All a Dream</title> 
+    <text> That’s when you pop awake and realize, the beeping was your alarm clock. It was all a dream, none of that happened. </text> 
+    <option link="">Click to continue. </option>
+</passage>
+
+<!-- Story Main Path Finishing Text of Game -->
+<!-- Allows Player to Play Again -->
+<passage id=""> 
+    <title>Continuing On</title> 
+    <text> You go to school and continue on in your life, but you never look at the geese on campus the same. You always worry that one day… they’ll fight back. </text> 
+    <option link="1"> Click to play again! </option>
+</passage>
 </passages>
