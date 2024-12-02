@@ -23,7 +23,7 @@ const pixis = async () => {
         height: canvasSize,
         autoResize: true,
         backgroundColor: 0x000000,
-        resolution: window.devicePixelRatio || 2
+        resolution: window.devicePixelRatio || 4
     });
 
     // Initialize InputHandler and PassageController

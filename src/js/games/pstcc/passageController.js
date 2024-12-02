@@ -13,7 +13,7 @@ export default class PassageController {
         this.parser = new DOMParser();
         this.passageFolder = "../resource/passages";
         this.passageFile = "testpassages2.xml";
-        this.endText = "The End"; // Default end text
+        this.endText = "The End"; 
     }
 
     async loadPassages() {
@@ -77,8 +77,6 @@ export default class PassageController {
         if (selectedOption) {
             // Push the current node to previousNodes stack for "return" functionality
             this.previousNodes.push(this.currentNode);
-
-            // Transition to the next node
             this.currentNode = this.storyNodes[selectedOption.link];
             this.renderCurrentNode();
         }
