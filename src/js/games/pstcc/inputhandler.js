@@ -26,6 +26,11 @@ export default class InputHandler{
     // }
 
     keyDown(e) {
+        if(e.keyCode == 32 && e.target == document.body) {
+            //Prevents spacebar from scrolling page
+            e.preventDefault();
+        }
+
         if(this.inputEnabled) {
             // String representation of which key was pressed
             const key = String(e.key);
