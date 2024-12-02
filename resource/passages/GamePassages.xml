@@ -293,87 +293,87 @@
 </passage>
 
 <!-- Success Choices#7 / Continue Story Main Path -->
-<passage id=""> 
+<passage id="41"> 
     <title>Poor Goose Noise / Box Opened</title> 
     <text> With the box now opened, you have retrieved the small vials. You look at them trying to figure out what the liquid inside is when you notice a note taped to the back of one. These are antidotes created by the professors in case of them accidentally being turned. </text> 
-    <option link="">Exit the room</option>
+    <option link="42">Exit the room</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="42"> 
     <title>Thinking on what to do</title> 
     <text> You exit the room and stealth your way back to the main room you were held in. Some of your classmates are still there, hiding from the geese. With your help, you subdue the geese in the room. You begin discussing with your classmates what you could do with these vials when an idea pops into your head </text> 
-    <option link="">Click to continue… </option>
+    <option link="43">Click to continue… </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="43"> 
     <title>The Idea</title> 
     <text> The geese all live here at the lair which is under the pond. Their entire drinking supply comes from the pond water. By pouring the vials into the pond’s main water supply, you could attempt to cure the geese </text> 
-    <option link="">Pitch your idea to everyone</option>
+    <option link="44">Pitch your idea to everyone</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="44"> 
     <title>Going to control room</title> 
     <text> You ask your classmates about your idea, and they all agree. All of you together begin stealthily making your way to the forking path. You check both of the other paths, and they lead to the same place, the pond’s fountain pump controls. </text> 
-    <option link=""> Go! </option>
+    <option link="45"> Go! </option>
 </passage>
 
 <!-- Story Main Path with Choice#8, 1 Success, 2 Fails-->
-<passage id=""> 
+<passage id="45"> 
     <title>The Pump Controls</title> 
     <text> You finally make it to the fountain pump controls. All of you begin spreading out around the controls in the center. As soon as everyone gets into position and begins to open their vials, the professors appear and catch one of your classmates. How can you fix this?: </text> 
-    <option link="">Grab a nearby pebble and throw it to distract the professors </option>
-    <option link="">Ask them why they’re doing this</option>
-    <option link="">Attempt to run and save your classmate</option>
+    <option link="44">Grab a nearby pebble and throw it to distract the professors </option>
+    <option link="46">Ask them why they’re doing this</option>
+    <option link="45">Attempt to run and save your classmate</option>
  </passage>
 
 <!-- Game Over Choice#8 -->
- <passage id="">
+ <passage id="44">
     <title>Pebble</title>
     <text>As you bend over to grab a nearby pebble, a goose guard notices you. He grabs you and takes you to a cage with no way out.</text>
     <option link="1">Restart</option>
 </passage>
 
 <!-- Game Over Choice#8 -->
-<passage id="">
+<passage id="45">
     <title>Attempt to Run</title>
     <text>As you attempt to run and save your classmate, a goose guard notices you. He grabs you and takes you to a cage with no way out.</text>
     <option link="1">Restart</option>
 </passage>
 
 <!-- Success Choice#8 , Continue Story Main Path -->
-<passage id=""> 
+<passage id="46"> 
     <title>The Monologue</title> 
     <text> As the professors begin a monologue explaining all of their reasons behind turning people into geese, you and all of your classmates begin sneakily pouring in your vials. </text> 
-    <option link="">Click to continue. </option>
+    <option link="47">Click to continue. </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="47"> 
     <title>The Cure</title> 
     <text> With all the vials poured, the water turns a bright, vibrant blue. The antidote has spread throughout the entire pond. Geese approach to take a drink and begin turning back into humans. </text> 
-    <option link="">Click to continue. </option>
+    <option link="48">Click to continue. </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="48"> 
     <title>Saving Everyone</title> 
     <text> You watch as the entire army falls apart due to the geese turning back to normal. As you are taking in the beauty of saving the world from a geese invasion, you begin hearing an absurd beeping noise. </text> 
-    <option link="">Try to locate the beeping</option>
+    <option link="49">Try to locate the beeping</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
-<passage id=""> 
+<passage id="49"> 
     <title>All a Dream</title> 
     <text> That’s when you pop awake and realize, the beeping was your alarm clock. It was all a dream, none of that happened. </text> 
-    <option link="">Click to continue. </option>
+    <option link="50">Click to continue. </option>
 </passage>
 
 <!-- Story Main Path Finishing Text of Game -->
 <!-- Allows Player to Play Again -->
-<passage id=""> 
+<passage id="50"> 
     <title>Continuing On</title> 
     <text> You go to school and continue on in your life, but you never look at the geese on campus the same. You always worry that one day… they’ll fight back. </text> 
     <option link="1"> Click to play again! </option>
