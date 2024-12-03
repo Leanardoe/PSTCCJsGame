@@ -34,7 +34,7 @@ export default class TextRenderer {
 
         // Typing animation properties
         this.isTyping = false;
-        this.typingSpeed = 1; // Characters per frame
+        this.typingSpeed = 2; // Characters per frame
         this.typingIndex = 0;
         this.typingLine = "";
         this.completeLines = [];
@@ -127,7 +127,6 @@ export default class TextRenderer {
         this.typingIndex = 0;
         this.isTyping = true;
         this.completeLines.push(""); // Add an empty line to start
-        console.log(this.completeLines);
     }
 
     renderTextLines() {
@@ -146,7 +145,8 @@ export default class TextRenderer {
         // Typing animation for the current line
         if (this.isTyping) {
             const currentLine = this.completeLines[this.completeLines.length - 1];
-            const updatedLine = currentLine + this.typingLine.charAt(this.typingIndex);
+            console.log(this.typingLine.slice(this.typingIndex, this.typingSpeed));
+            const updatedLine = currentLine + this.typingLine.slice(this.typingIndex, this.typingSpeed + this.typingIndex);
             this.completeLines[this.completeLines.length - 1] = updatedLine;
 
             // Increment typing index
@@ -154,7 +154,6 @@ export default class TextRenderer {
             if (this.typingIndex >= this.typingLine.length) {
                 this.isTyping = false; // Finish typing current line
                 if (this.incompleteLines.length > 0) {
-                    console.log(this.incompleteLines);
                     this.startTyping(this.incompleteLines.shift());
                 }
             }
