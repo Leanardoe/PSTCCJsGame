@@ -34,7 +34,7 @@ export default class TextRenderer {
 
         // Typing animation properties
         this.isTyping = false;
-        this.typingSpeed = 2; // Characters per frame
+        this.typingSpeed = 1; // Characters per frame
         this.typingIndex = 0;
         this.typingLine = "";
         this.completeLines = [];
@@ -59,7 +59,7 @@ export default class TextRenderer {
         this.leftMargin = this.app.screen.width * .1;
 
         // Display text only properties
-        this.initialLineHeight = this.app.screen.height * .1;
+        this.initialLineHeight = this.app.screen.height * .02;
 
         // Input only properties
         this.inputY = this.app.screen.height * .85;
@@ -67,7 +67,7 @@ export default class TextRenderer {
         this.errorY = this.inputY - this.app.screen.height * .05;
 
         // Dynamic font size
-        const fontSize = Math.max(this.app.screen.width * .03, 20);
+        const fontSize = Math.max(this.app.screen.width * .025, 20);
         const inputFontSize = Math.max(fontSize - fontSize * .05, 18);
         const errorFontSize = Math.max(fontSize - fontSize * .2, 15);
 

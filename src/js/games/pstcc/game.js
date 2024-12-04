@@ -8,7 +8,7 @@ import audioMgr from "./audioManager.js";
 
 let canvasSize = 400;
 const canvas = document.getElementById("test-container");
-const maxFPS = 20;
+const maxFPS = 60;
 
 let passageController;
 let inputHandler;

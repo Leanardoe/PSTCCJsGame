@@ -4,7 +4,7 @@
 <!-- Beginning Story Dialogue -->
 <passage id="1"> 
     <title>(Establishing Dialog)</title> 
-    <text>It's a Friday morning, and lucky you! You have an early class! (woohoo...) It’s not all bad you only have one more day before the campus 5k you signed up for. You know it’s gonna be fun because you get to chase the geese around the pond. Those birds have been a blessing and a blite on the Hardin Valley campus. The honking has made the campus feel close to nature but all of the POOP is so annoying. I mean it’s not like the geese have anything better to do all day. </text> 
+    <text>It's a Friday morning, and lucky you! You have an early class! (woohoo...) It’s not all bad. You only have one more day before the campus 5k you signed up for. You know it’s gonna be fun because you get to chase the geese around the pond. Those birds have been a blessing and a blight on the Hardin Valley campus. The honking has made the campus feel close to nature but all of the POOP is so annoying. I mean it’s not like the geese have anything better to do all day. </text> 
     <option link="2">Wake Up</option>
  </passage>
 
@@ -27,7 +27,7 @@
 <passage id="4"> 
     <title>Wake up and get ready</title> 
     <text> You get dressed and pack your lunch. With your lunch now packed, you head to school </text> 
-    <option link="5">Click to continue</option>
+    <option link="5">Continue</option>
 </passage>
 
 <!-- Story Main Path With Choice#2, 1 Success, 2 Fails-->
@@ -57,7 +57,7 @@
 <passage id="8"> 
     <title>Park your car</title> 
     <text> After you park and get out, you begin walking to class. </text> 
-    <option link="9">Click to continue</option>
+    <option link="9">Continue</option>
  </passage>
 
 <!-- Story Main Path Filler Text -->
@@ -78,14 +78,14 @@
 <passage id="11"> 
     <title>Go to class</title> 
     <text> You arrive at the classroom barely making it on time, but strangely, the door is locked. You and your classmates are wondering what the hold-up is as you notice Dr. Charles is hurrying in.</text> 
-    <option link="12">Click to continue</option>
+    <option link="12">Continue</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
 <passage id="12"> 
     <title>What do we have here?</title> 
     <text> As she unlocks the door, you notice a feather fall off them. </text> 
-    <option link="13">Click to continue</option>
+    <option link="13">Continue</option>
  </passage>
 
 <!-- Story Main Path Filler Text -->
@@ -99,19 +99,19 @@
 <passage id="14"> 
     <title>Begin class</title> 
     <text> Mid-way through the class Dr. Charles gets everyone’s attention to the front of the classroom. On the projector is an image of a goose. Before anyone can ask about it, it begins to play an animation. One by one people began to fall asleep at their desks. You eventually fall asleep. </text> 
-    <option link="15">Click to continue</option>
+    <option link="15">Continue</option>
  </passage>
 
 <!-- Story Main Path Filler Text -->
 <passage id="15"> 
     <title>First Encounter in the Lair</title> 
     <text> As you come to, you find that you and your classmates are in a spooky goose lair located under the pond on campus </text> 
-    <option link="16">Become aware of your surroundings</option>
+    <option link="16">Look around</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
 <passage id="16"> 
-    <title>Become aware of your surroundings</title> 
+    <title>Look around</title> 
     <text> You are inside a cage with a few of your classmates. There are geese patrolling the lair. Your hands are unbound but you do not see any way out of the cage </text> 
     <option link="17">Continue looking around</option>
 </passage>
@@ -127,7 +127,7 @@
 <passage id="18"> 
     <title>Continue listening</title> 
     <text> You realize that everyone around you was on the registration sheet for the Wild Goose Chase 5k race that’s happening soon. </text> 
-    <option link="19">Click to continue</option>
+    <option link="19">Continue</option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
@@ -252,13 +252,13 @@
 <passage id="35"> 
     <title>Source of the noise</title> 
     <text>You look to your right outside of a vent window and notice Dr. Charles and Professor Dunn are in a room together. You hear screams and look closer just to notice that some of your classmates are in a device! </text> 
-    <option link="36">Click to continue.. </option>
+    <option link="36">Continue.. </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
 <passage id="36"> 
     <title>Source of the geese</title> 
-    <text> They were the classmates you were running away with! They were caught and place in the device! Before your eye the device kicks on and with a flash your classmates are turned into geese! </text> 
+    <text> They were the classmates you were running away with! They were caught and placed in the device! Before your eye the device kicks on and with a flash your classmates are turned into geese! </text> 
     <option link="37">Find a way out!</option>
 </passage>
 
@@ -273,7 +273,7 @@
 <passage id="38"> 
     <title>Looking Around</title> 
     <text> You scavenge around searching for anything to help you, and then you finally notice it. </text> 
-    <option link="39">Click to continue. </option>
+    <option link="39">Continue. </option>
 </passage>
 
 <!-- Story Main Path with Choice#7, 2 Successes, 1 Fail-->
@@ -303,7 +303,7 @@
 <passage id="42"> 
     <title>Thinking on what to do</title> 
     <text> You exit the room and stealth your way back to the main room you were held in. Some of your classmates are still there, hiding from the geese. With your help, you subdue the geese in the room. You begin discussing with your classmates what you could do with these vials when an idea pops into your head </text> 
-    <option link="43">Click to continue… </option>
+    <option link="43">Continue… </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
@@ -347,14 +347,14 @@
 <passage id="46"> 
     <title>The Monologue</title> 
     <text> As the professors begin a monologue explaining all of their reasons behind turning people into geese, you and all of your classmates begin sneakily pouring in your vials. </text> 
-    <option link="47">Click to continue. </option>
+    <option link="47">Continue. </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
 <passage id="47"> 
     <title>The Cure</title> 
     <text> With all the vials poured, the water turns a bright, vibrant blue. The antidote has spread throughout the entire pond. Geese approach to take a drink and begin turning back into humans. </text> 
-    <option link="48">Click to continue. </option>
+    <option link="48">Continue. </option>
 </passage>
 
 <!-- Story Main Path Filler Text -->
@@ -368,7 +368,7 @@
 <passage id="49"> 
     <title>All a Dream</title> 
     <text> That’s when you pop awake and realize, the beeping was your alarm clock. It was all a dream, none of that happened. </text> 
-    <option link="50">Click to continue. </option>
+    <option link="50">Continue. </option>
 </passage>
 
 <!-- Story Main Path Finishing Text of Game -->
